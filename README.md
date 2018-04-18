@@ -5,7 +5,7 @@ Organized in rough order of what we will implement!
 ### Instance Vars
 **DLLNode _list//_will be the main deque that we  will be modifying_
 ### Methods
-**size()** will tell us how many nodes there are in this deque, will be used in later functions.
+**size()** will tell us how many nodes there are in this deque, will be used in later functions. \n
 **addLast()** equivalent to enqueueing, this will add to the end of the deque(the Last element of the deque)
 **addFirst()** equivalent to enqueueing, this will add to the beginning of the deque(the first element of the deque)
 The functions above comprise the primary adding functions, and are the ones we will code first!
