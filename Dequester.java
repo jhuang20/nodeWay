@@ -24,11 +24,13 @@ public class Dequester implements Deque {
     }
 
     public void addFirst(String e){ //adds to beginning
+	// new node becomes the head and its nextNode points to former head
 	_head = new DLLNode( e, null, _head );
 	if (isEmpty()) {
 	    _tail = _head; // head and tail should point to the same node
 	}
 	else {
+	    // set former head's previous to new head
 	    _head.getNext().setPrev( _head );
 	}
 	_size++;
@@ -46,11 +48,13 @@ public class Dequester implements Deque {
     }
 
     public void addLast(String e){ //adds to end
+	// new node becomes the tail and its prevNode points to former tail
 	_tail = new DLLNode( e, _tail, null );
 	if (isEmpty()) {
 	    _head = _tail; // head and tail should point to the same node
 	}
 	else {
+	    // set former tail's next to new tail
 	    _tail.getPrev().setNext( _tail );
 	}
 	_size++;
