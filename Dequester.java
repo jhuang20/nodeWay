@@ -8,7 +8,7 @@
  * Implements Deque using doubly linked nodes
  *****************************************************/
 
-public class Dequester{
+public class Dequester implements Deque {
 
     //instance vars
     public DLLNode _head, _tail;
