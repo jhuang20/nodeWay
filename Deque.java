@@ -1,6 +1,5 @@
 public interface Deque<Card> {
-  private DLLNode<Card> _list;
-  private int _size;
+
   public void addFirst(Card e);//adds to beginning
 
   public void addLast(Card e);//adds to end
