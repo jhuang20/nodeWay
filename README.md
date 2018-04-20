@@ -3,7 +3,8 @@ James Huang, Richard Wong, Eddie Zhu
 ## To-do List
 Organized in rough order of what we will implement!
 ### Instance Vars
-**DLLNode _list//_will be the main deque that we  will be modifying_
+**DLLNode _head**//_will be the main deque that we  will be modifying_
+**DLLNode _tail**//_will be the end of the deck, will use in removing last(expedites process)_
 **int size
 ### Methods
 **size()** will tell us how many nodes there are in this deque, will be used in later functions.    
