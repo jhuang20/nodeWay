@@ -11,7 +11,7 @@
 public class Dequester<T> implements Deque<T> {
 
     //instance vars
-    public DLLNode<T> _head, _tail;
+    public DLLNode _head, _tail;
     private int _size;
 
     public Dequester(){
@@ -23,9 +23,9 @@ public class Dequester<T> implements Deque<T> {
 	**/
     }
 
-    public void addFirst(String e){ //adds to beginning
+    public void addFirst(T e){ //adds to beginning
 	// new node becomes the head and its nextNode points to former head
-	_head = new DLLNode<T>( e, null, _head );
+	_head = new DLLNode( (String) e, null, _head );
 	if (isEmpty()) {
 	    _tail = _head; // head and tail should point to the same node
 	}
@@ -34,9 +34,9 @@ public class Dequester<T> implements Deque<T> {
 	    _head.getNext().setPrev( _head );
 	}
 	_size++;
-	
+
 	/**
-	 //This would result in some conflicts because _tail would be null 
+	 //This would result in some conflicts because _tail would be null
 	 //if there was only 1 node
 
 	if (isEmpty()) {
@@ -47,9 +47,9 @@ public class Dequester<T> implements Deque<T> {
 	**/
     }
 
-    public void addLast(String e){ //adds to end
+    public void addLast(T e){ //adds to end
 	// new node becomes the tail and its prevNode points to former tail
-	_tail = new DLLNode<T>( e, _tail, null );
+	_tail = new DLLNode((String) e, _tail, null );
 	if (isEmpty()) {
 	    _head = _tail; // head and tail should point to the same node
 	}
@@ -58,7 +58,7 @@ public class Dequester<T> implements Deque<T> {
 	    _tail.getPrev().setNext( _tail );
 	}
 	_size++;
-	
+
 	/**
 	   //This would result in some conflicts because _head would be null
 	   //if there was only 1 node
@@ -68,10 +68,10 @@ public class Dequester<T> implements Deque<T> {
 	_tail=new DLLNode(e, _tail, null);//links this to the previous last element, puts it after
 	**/
     }
-    
+
     public boolean isEmpty() {//new fxn to keep track of size(used for addFirst and addLast)
 	return _size <= 0;
-	
+
 
     }
 
@@ -85,7 +85,7 @@ public class Dequester<T> implements Deque<T> {
 	if (isEmpty())
 	    return null;
 	else {
-	    return _head.getValue();
+	    return (T)_head.getCargo();
 	}
     }
 
@@ -94,33 +94,91 @@ public class Dequester<T> implements Deque<T> {
 	if (isEmpty())
 	    return null;
 	else {
-	    return _tail.getValue();
+	    return (T)_tail.getCargo();
 	}
+}
+  public T removeFirst() {
+    if (isEmpty())
+      return null;
+    else {
+      T ret=(T)_head.getCargo();
+      _head=_head.getNext();
+      _size-=1;
+      return ret;
     }
-    
+  }
+  public T removeLast() {
+    if (isEmpty())
+      return null;
+    else {
+      T ret=(T)_tail.getCargo();
+      _tail=_tail.getPrev();
+      _size-=1;
+      return ret;
+    }
+
+  }
+
 
     public static void main(String[] args){
-	/**************
+
 	Dequester test1 = new Dequester();
 	test1.addFirst("Ding");
-	System.out.println(test1._list.toString());
+
 	test1.addFirst("Dong");
-	System.out.println(test1._list.toString());
+
 	test1.addFirst("PING");
-	System.out.println(test1._list.toString());
+
 	test1.addFirst("pong");
-	System.out.println(test1._list.toString());
+
 	test1.addFirst("poong");
 
-	System.out.println(test1._list.toString());
+
 
 	test1.addLast("king");
        	test1.addLast("kong");
 	test1.addLast("keng");
 	test1.addLast("kang");
+System.out.println( test1.peekLast());//kang
+System.out.println( test1.removeLast());//kang
+System.out.println( test1.removeLast());//keng
+System.out.println( test1.removeLast());//kong
+System.out.println( test1.removeLast());//king
+System.out.println( test1.removeLast());//ding
+System.out.println( test1.removeLast());//dong
+System.out.println( test1.removeLast());//ping
+System.out.println( test1.removeLast());//pong
+System.out.println( test1.removeLast());//poong
+System.out.println( test1.removeLast());//should be null
+System.out.println("Testing remove and peekFirst");
+test1.addFirst("Ding");
 
-      	System.out.println(test1._list.toString());
-	**************/
+test1.addFirst("Dong");
+
+test1.addFirst("PING");
+
+test1.addFirst("pong");
+
+test1.addFirst("poong");
+
+
+
+test1.addLast("king");
+      test1.addLast("kong");
+test1.addLast("keng");
+test1.addLast("kang");
+System.out.println(test1.peekFirst());
+System.out.println(test1.removeFirst());
+System.out.println(test1.removeFirst());
+System.out.println(test1.removeFirst());
+System.out.println(test1.removeFirst());
+System.out.println(test1.removeFirst());
+System.out.println(test1.removeFirst());
+System.out.println(test1.removeFirst());
+System.out.println(test1.removeFirst());
+System.out.println(test1.removeFirst());
+System.out.println(test1.removeFirst());
+//	**************/
 
 
 

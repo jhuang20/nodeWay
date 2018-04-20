@@ -13,5 +13,5 @@ public interface Deque<T> {
   public T peekLast();//peeks at element being removed in back
   public T removeFirst();//remove first element
   public T removeLast();//remove last element
-  public T size();
+  public int size();
 }
