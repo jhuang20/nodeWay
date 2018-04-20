@@ -8,10 +8,10 @@
  * Implements Deque using doubly linked nodes
  *****************************************************/
 
-public class Dequester implements Deque {
+public class Dequester<T> implements Deque<T> {
 
     //instance vars
-    public DLLNode _head, _tail;
+    public DLLNode<T> _head, _tail;
     private int _size;
 
     public Dequester(){
@@ -25,7 +25,7 @@ public class Dequester implements Deque {
 
     public void addFirst(String e){ //adds to beginning
 	// new node becomes the head and its nextNode points to former head
-	_head = new DLLNode( e, null, _head );
+	_head = new DLLNode<T>( e, null, _head );
 	if (isEmpty()) {
 	    _tail = _head; // head and tail should point to the same node
 	}
@@ -49,7 +49,7 @@ public class Dequester implements Deque {
 
     public void addLast(String e){ //adds to end
 	// new node becomes the tail and its prevNode points to former tail
-	_tail = new DLLNode( e, _tail, null );
+	_tail = new DLLNode<T>( e, _tail, null );
 	if (isEmpty()) {
 	    _head = _tail; // head and tail should point to the same node
 	}
@@ -68,11 +68,36 @@ public class Dequester implements Deque {
 	_tail=new DLLNode(e, _tail, null);//links this to the previous last element, puts it after
 	**/
     }
+    
     public boolean isEmpty() {//new fxn to keep track of size(used for addFirst and addLast)
 	return _size <= 0;
 	
 
     }
+
+    //returns size
+    public int size() {
+	return _size;
+    }
+
+    //returns value at first without removing
+    public T peekFirst() {
+	if (isEmpty())
+	    return null;
+	else {
+	    return _head.getValue();
+	}
+    }
+
+    //returns value at last without removing
+    public T peekLast() {
+	if (isEmpty())
+	    return null;
+	else {
+	    return _tail.getValue();
+	}
+    }
+    
 
     public static void main(String[] args){
 	/**************
