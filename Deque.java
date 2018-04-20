@@ -1,12 +1,17 @@
-public interface Deque<Card> {
+//NodeWay- James Huang, Richard Wong, Eddie Zhu
+//APCS2 pd1
+//L#02 -- All Hands on Deque!
+//2018-04-19
 
-  public void addFirst(Card e);//adds to beginning
+public interface Deque<T> {
 
-  public void addLast(Card e);//adds to end
+  public void addFirst(T cargo);//adds to beginning
 
-  public Card peekFirst();//peeks at element being removed in front
-  public Card peekLast();//peeks at element being removed in back
-  public Card removeFirst();//remove first element
-  public Card removeLast();//remove last element
-  public int size();
+  public void addLast(T cargo);//adds to end
+
+  public T peekFirst();//peeks at element being removed in front
+  public T peekLast();//peeks at element being removed in back
+  public T removeFirst();//remove first element
+  public T removeLast();//remove last element
+  public T size();
 }

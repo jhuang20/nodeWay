@@ -1,3 +1,8 @@
+//NodeWay- James Huang, Richard Wong, Eddie Zhu
+//APCS2 pd1
+//L#02 -- All Hands on Deque!
+//2018-04-19
+
 /*****************************************************
  * class DLLNode v1
  * Implements a node, for use in lists and other container classes.
