@@ -24,7 +24,7 @@ __---~~~~--__                      __--~~~~---__
 
 public class DequeDriver_FC{
   public static void main(String[] args) {
-    Dequester<String> iscream = new Dequester<String>();
+    QQKachoo<String> iscream = new QQKachoo<String>();
 
     System.out.println("-----Adding to front------");
     iscream.addFirst("Chocolate");
