@@ -2,28 +2,25 @@
 //APCS2 pd1
 //L#02 -- All Hands on Deque!
 //2018-04-19
+//NOTE: This is a new version that works without typecasting everything
 
 /*****************************************************
  * class Dequester
  * Implements Deque using doubly linked nodes
  *****************************************************/
 
-public class Dequester<T> implements Deque<T> {
+public class QQKachoo<T> implements Deque<T> {
 
     //instance vars
     public DLLNode<T> _head, _tail;
     private int _size;
-
-    public Dequester(){
+//default constructor
+    public QQKachoo(){
 	_head = _tail = null; //queue should have no elements at birth
 	_size = 0;
-	/**
-	_head = new DLLNode(null, null, _tail);
-	_tail= new DLLNode(null, _head, null);//links the two lists
-	**/
     }
 
-    public void addFirst(T e){ //adds to beginning
+    public void addFirst(T e){ //adds to beginning of our Deque
 	// new node becomes the head and its nextNode points to former head
 	_head = new DLLNode<T>( e, null, _head );
 	if (isEmpty()) {
@@ -36,7 +33,7 @@ public class Dequester<T> implements Deque<T> {
 	_size++;
     }
 
-    public void addLast(T e){ //adds to end
+    public void addLast(T e){ //adds to end of our Deque
 	// new node becomes the tail and its prevNode points to former tail
 	_tail = new DLLNode<T>( e, _tail, null );
 	if (isEmpty()) {
@@ -61,9 +58,9 @@ public class Dequester<T> implements Deque<T> {
     //returns value at first without removing
     public T peekFirst() {
 	if (isEmpty())
-	    return null;
+	    return null;//will return this for now, exception handling a bit messy
 	else {
-	    return (T)_head.getCargo();
+	    return _head.getCargo();//returns the first element
 	}
     }
 
@@ -72,27 +69,29 @@ public class Dequester<T> implements Deque<T> {
 	if (isEmpty())
 	    return null;
 	else {
-	    return _tail.getCargo();
+	    return _tail.getCargo();//returns the last element
 	}
     }
-    
+    //removes the first element(one located at head)
+	//runtime: O(1) as it just sets the pointer to the next element
     public T removeFirst() {
 	if (isEmpty())
 	    return null;
 	else {
 	    T ret = _head.getCargo();
-	    _head = _head.getNext();
-	    _size -= 1;
+	    _head = _head.getNext();//sets pointer to the next one
+	    _size -= 1;//decrements size by one so we know the list is smaller
 	    return ret;
 	}
     }
-    
+    //removes the last element(one located at tail)
+	//runtime: O(1) as it just sets the tail pointer to the previous element
     public T removeLast() {
 	if (isEmpty())
 	    return null;
 	else {
 	    T ret = _tail.getCargo();
-	    _tail = _tail.getPrev();
+	    _tail = _tail.getPrev();//sets end of list to previous one(does not refer to the current one anymore)
 	    _size -= 1;
 	    return ret;
 	}
@@ -102,7 +101,7 @@ public class Dequester<T> implements Deque<T> {
 
     public static void main(String[] args){
 
-	Dequester<String> test1 = new Dequester<String>();
+	QQKachoo<String> test1 = new QQKachoo<String>();
 	test1.addFirst("Ding");
 
 	test1.addFirst("Dong");
